@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/doctors")
+@RequestMapping("/create-doctor/doctors")
 public class DoctorController {
 
     private final DoctorService doctorService;
@@ -19,5 +19,10 @@ public class DoctorController {
     public ResponseEntity<Doctor> createDoctor(@RequestBody Doctor doctor) {
         Doctor savedDoctor = doctorService.createDoctor(doctor);
         return ResponseEntity.ok(savedDoctor);
+    }
+
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Healthy");
     }
 }
